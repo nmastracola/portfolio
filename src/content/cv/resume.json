@@ -1,0 +1,52 @@
+{
+  "basics": {
+    "name": "Nicholas Mastracola",
+    "title": "Software Developer",
+    "location": "Utah, USA",
+    "email": "you@example.com",
+    "links": [
+      { "label": "GitHub", "url": "https://github.com/yourusername" },
+      { "label": "LinkedIn", "url": "https://linkedin.com/in/yourusername" }
+    ],
+    "summary": "One or two sentences — what you do and what you're looking for. Write this last, after the rest of the CV is filled in; it's easier to summarize once the detail exists."
+  },
+  "experience": [
+    {
+      "company": "Instructure",
+      "role": "EdTech Implementation Consultant",
+      "location": "Remote",
+      "start": "2022-01",
+      "end": "2024-11",
+      "highlights": [
+        "Replace with a real accomplishment — Node.js, SQL, or Puppeteer automation work, quantified if possible",
+        "Replace with a second accomplishment"
+      ]
+    },
+    {
+      "company": "Tyson Foods",
+      "role": "Parts Room / Inventory",
+      "location": "Utah",
+      "start": "2024-11",
+      "end": null,
+      "highlights": [
+        "Note plant closure date if relevant to framing (Oct 2026)",
+        "Any process/inventory system improvements worth mentioning"
+      ]
+    }
+  ],
+  "education": [
+    {
+      "institution": "Southern New Hampshire University",
+      "credential": "B.S. Computer Science, Machine Learning concentration",
+      "focus": "In progress",
+      "start": "2023",
+      "end": null,
+      "notes": "Add GPA if it's strong enough to be worth including"
+    }
+  ],
+  "skills": [
+    { "category": "Languages", "items": ["JavaScript", "Python", "SQL"] },
+    { "category": "Infrastructure", "items": ["Docker", "Linux", "Self-hosted networking (Unifi, PKI/step-ca)"] },
+    { "category": "Tools", "items": ["Git", "Puppeteer", "Node.js"] }
+  ]
+}

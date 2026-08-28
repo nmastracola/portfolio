@@ -1,0 +1,42 @@
+<button id="theme-toggle" class="theme-toggle" aria-label="Toggle color theme" type="button">
+  <span data-icon="light" aria-hidden="true">☀</span>
+  <span data-icon="dark" aria-hidden="true">☾</span>
+</button>
+
+<style>
+  .theme-toggle {
+    background: none;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    width: 2.25rem;
+    height: 2.25rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: var(--color-ink);
+    font-size: 1rem;
+  }
+
+  /* Show the icon representing the theme you'd switch TO */
+  .theme-toggle [data-icon='dark'] { display: none; }
+  :root[data-theme='dark'] .theme-toggle [data-icon='light'] { display: none; }
+  :root[data-theme='dark'] .theme-toggle [data-icon='dark'] { display: inline; }
+</style>
+
+<script is:inline>
+  (function () {
+    var toggle = document.getElementById('theme-toggle');
+    if (!toggle) return;
+
+    toggle.addEventListener('click', function () {
+      var current = document.documentElement.getAttribute('data-theme');
+      var systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var effectiveCurrent = current || (systemPrefersDark ? 'dark' : 'light');
+      var next = effectiveCurrent === 'dark' ? 'light' : 'dark';
+
+      document.documentElement.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
+    });
+  })();
+</script>

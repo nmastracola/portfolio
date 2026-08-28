@@ -1,0 +1,52 @@
+---
+import ThemeToggle from './ThemeToggle.astro';
+---
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="/" class="wordmark">Nicholas Mastracola</a>
+    <nav aria-label="Primary">
+      <a href="/">Home</a>
+      <a href="/cv">CV</a>
+      <!-- <a href="/blog">Writing</a> -- uncomment when blog ships -->
+    </nav>
+    <ThemeToggle />
+  </div>
+</header>
+
+<style>
+  .site-header {
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-2);
+    padding-block: var(--space-2);
+  }
+
+  .wordmark {
+    font-family: var(--font-display);
+    font-weight: 700;
+    text-decoration: none;
+    color: var(--color-ink);
+  }
+
+  nav {
+    display: flex;
+    gap: var(--space-3);
+  }
+
+  nav a {
+    color: var(--color-ink);
+    text-decoration: none;
+    font-family: var(--font-display);
+    font-weight: 600;
+  }
+
+  nav a:hover {
+    color: var(--color-accent);
+  }
+</style>

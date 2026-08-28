@@ -1,0 +1,142 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getEntry } from 'astro:content';
+
+const cv = await getEntry('cv', 'resume');
+const { basics, experience, education, skills } = cv.data;
+
+function formatRange(start: string, end?: string | null): string {
+  return `${start} — ${end ?? 'Present'}`;
+}
+---
+
+<BaseLayout title={`CV — ${basics.name}`} description={basics.summary}>
+  <div class="container cv">
+    <header class="cv-header">
+      <div>
+        <h1>{basics.name}</h1>
+        <p class="cv-title">{basics.title} · {basics.location}</p>
+        <p>{basics.summary}</p>
+        <div class="cv-links">
+          {basics.links.map((link) => (
+            <a href={link.url}>{link.label}</a>
+          ))}
+          <a href={`mailto:${basics.email}`}>{basics.email}</a>
+        </div>
+      </div>
+      <!--
+        Secondary export, not the primary artifact — see earlier
+        decision. Drop a generated resume.pdf into /public and this
+        link works as-is.
+      -->
+      <a class="button no-print" href="/resume.pdf" download>Download PDF</a>
+    </header>
+
+    <section>
+      <h2>Experience</h2>
+      {experience.map((job) => (
+        <article class="entry">
+          <div class="entry-head">
+            <h3>{job.role} · {job.company}</h3>
+            <span class="entry-range">{formatRange(job.start, job.end)}</span>
+          </div>
+          {job.location && <p class="entry-location">{job.location}</p>}
+          <ul>
+            {job.highlights.map((h) => <li>{h}</li>)}
+          </ul>
+        </article>
+      ))}
+    </section>
+
+    <section>
+      <h2>Education</h2>
+      {education.map((ed) => (
+        <article class="entry">
+          <div class="entry-head">
+            <h3>{ed.credential}</h3>
+            <span class="entry-range">{formatRange(ed.start, ed.end)}</span>
+          </div>
+          <p class="entry-location">{ed.institution}{ed.focus ? ` · ${ed.focus}` : ''}</p>
+          {ed.notes && <p>{ed.notes}</p>}
+        </article>
+      ))}
+    </section>
+
+    <section>
+      <h2>Skills</h2>
+      <div class="skills-grid">
+        {skills.map((group) => (
+          <div>
+            <h3>{group.category}</h3>
+            <p>{group.items.join(', ')}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+  </div>
+</BaseLayout>
+
+<style>
+  .cv-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: var(--space-3);
+    padding-block: var(--space-4);
+    border-bottom: 1px solid var(--color-border);
+    margin-bottom: var(--space-4);
+    flex-wrap: wrap;
+  }
+
+  .cv-title {
+    color: var(--color-ink-muted);
+    font-family: var(--font-display);
+    font-weight: 600;
+  }
+
+  .cv-links {
+    display: flex;
+    gap: var(--space-2);
+    flex-wrap: wrap;
+    margin-top: var(--space-1);
+  }
+
+  section {
+    margin-bottom: var(--space-5);
+  }
+
+  .entry {
+    margin-bottom: var(--space-3);
+  }
+
+  .entry-head {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--space-2);
+    flex-wrap: wrap;
+    align-items: baseline;
+  }
+
+  .entry-range {
+    font-family: var(--font-display);
+    color: var(--color-ink-muted);
+    white-space: nowrap;
+  }
+
+  .entry-location {
+    color: var(--color-ink-muted);
+    margin-bottom: var(--space-1);
+  }
+
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr));
+    gap: var(--space-3);
+  }
+
+  /* Browser print/save-as-PDF fallback for this page itself,
+     separate from the dedicated /resume.pdf download above. */
+  @media print {
+    .no-print { display: none; }
+  }
+</style>
