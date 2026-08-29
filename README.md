@@ -27,16 +27,6 @@ runtime beyond what Astro ships by default.
   `/resume.pdf`; drop a generated PDF into `public/` for that link to work.
   The HTML page is the primary artifact; the PDF is the export.
 
-## Not decided yet / left as TODOs in the code
-
-- Landing page positioning line (`src/pages/index.astro`) — what the site
-  asserts about you in one sentence. Marked with a `TODO` comment.
-- Headshot crop and placement on the landing page vs. CV page.
-- "Selected work" section content — intentionally left empty rather than
-  filled with placeholder cards.
-- Actual CV content in `resume.json` — currently placeholder data matching
-  the shape, not your real history.
-
 ## Getting started
 
 ```bash
