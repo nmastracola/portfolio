@@ -1,5 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { Image } from 'astro:assets';
+import headshot from '../assets/headshot.jpg';
 ---
 
 <BaseLayout title="Nicholas Mastracola" description="Developer. Writer. Homelab enthusiast.">
@@ -12,26 +14,17 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         writes about mythology and Destiny 2 lore." Pick on purpose.
       -->
       <h1>Nicholas Mastracola</h1>
-      <p class="tagline">Replace with your one-line positioning statement.</p>
+      <p class="tagline">Software Developer & Systems Specialist</p>
       <div class="cta-row">
         <a class="button" href="/cv">View CV</a>
       </div>
     </div>
-    <!--
-      TODO: headshot goes here. Decide crop (square vs. circle) and
-      whether the landing page wants the same formal crop as the CV
-      page or something looser — see earlier discussion on tone.
-    -->
-    <div class="hero-photo" aria-hidden="true"></div>
+    <div class="hero-photo" aria-hidden="true"><Image class="hero-photo" src={headshot} alt="Nicholas Mastracola" width={400} height={400} densities={[1, 2]}/></div>
   </section>
 
   <section class="container">
     <h2>Selected work</h2>
     <p class="placeholder-note">
-      Populate once you've decided what belongs here — dev projects,
-      homelab writeups, or both. Keep this section deliberately empty
-      rather than filling it with placeholder cards; an empty section
-      with a clear label is more honest than fake content.
     </p>
   </section>
 </BaseLayout>
@@ -63,8 +56,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
   .hero-photo {
     aspect-ratio: 1 / 1;
-    background: var(--color-bg-raised);
-    border: 1px solid var(--color-border);
+  }
+
+  .hero-photo img {
     border-radius: var(--radius-md);
   }
 

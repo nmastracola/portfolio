@@ -1,52 +1,63 @@
 {
   "basics": {
     "name": "Nicholas Mastracola",
-    "title": "Software Developer",
+    "title": "Software Developer & Systems Specialist",
     "location": "Utah, USA",
-    "email": "you@example.com",
+    "email": "nicholas@mastraco.la",
     "links": [
-      { "label": "GitHub", "url": "https://github.com/yourusername" },
-      { "label": "LinkedIn", "url": "https://linkedin.com/in/yourusername" }
+      { "label": "GitHub", "url": "https://github.com/nmastracola" },
+      { "label": "LinkedIn", "url": "https://linkedin.com/in/nicholasmastracola" }
     ],
-    "summary": "One or two sentences — what you do and what you're looking for. Write this last, after the rest of the CV is filled in; it's easier to summarize once the detail exists."
+    "summary": "Technical professional with six years of client-facing implementation and automation experience (Node.js, SQL, API integration, browser automation) in EdTech, now applying the same problem-solving approach to inventory and operations systems in manufacturing while completing a B.S. in Computer Science. Comfortable moving between technical and operational domains — from reverse-engineering undocumented APIs to owning inventory accuracy for a 700+ employee facility."
   },
   "experience": [
     {
-      "company": "Instructure",
-      "role": "EdTech Implementation Consultant",
-      "location": "Remote",
-      "start": "2022-01",
-      "end": "2024-11",
+      "company": "Tyson Foods",
+      "companyUrl": "https://www.tysonfoods.com",
+      "role": "Parts Room Attendant",
+      "location": "Utah",
+      "start": "2025-07",
+      "end": null,
       "highlights": [
-        "Replace with a real accomplishment — Node.js, SQL, or Puppeteer automation work, quantified if possible",
-        "Replace with a second accomplishment"
+        "Joined in production roles (Machine Operator; Pre-Trim/Whizzard operator) before moving into Parts Room Attendant in March 2026; LOTO (Lockout/Tagout) certified",
+        "Manage inventory across 4,000+ SAP material records supporting maintenance and production operations across ~15 production lines in a 700+ employee facility",
+        "Analyzed cycle count compliance and inventory accuracy issues; redesigned count scheduling and review processes in collaboration with planners and supervisors",
+        "Used SAP transaction data, Excel, and Power Query to analyze consumption trends, supplier lead times, and critical spare availability, supporting purchasing and shutdown-planning decisions",
+        "Defined requirements and evaluated Microsoft 365 tooling for a digital maintenance parts-request workflow, replacing an ad hoc manual process",
+        "Architected and built a centralized storeroom knowledge base covering procedures, vendor information, and SAP reference material for training and knowledge retention",
+        "Built a proof-of-concept Power BI dashboard for inventory metrics"
       ]
     },
     {
-      "company": "Tyson Foods",
-      "role": "Parts Room / Inventory",
-      "location": "Utah",
-      "start": "2024-11",
-      "end": null,
+      "company": "Instructure",
+      "companyUrl": "https://www.instructure.com",
+      "role": "Implementation Consultant",
+      "location": "Remote",
+      "start": "2018-11",
+      "end": "2025-01",
       "highlights": [
-        "Note plant closure date if relevant to framing (Oct 2026)",
-        "Any process/inventory system improvements worth mentioning"
+        "Delivered LMS/Canvas migration projects for higher-ed and K-12 clients over six years, functioning as de facto technical lead across 5-10 concurrent migrations (peak 10-15)",
+        "Became the team's specialist for non-standard, undocumented-API migrations — reverse-engineered authentication and network traffic to export client data from LMS platforms with no supported API, covering 20+ clients across Blackboard, Schoology, and PowerSchool",
+        "Rebuilt and owned an internal Node.js/Postgres video migration tool for Canvas Studio, adding session-refresh handling for long-running jobs and an auditable record of migrated content; ownership required a formal handoff to another team upon departure",
+        "Directly influenced shipped Canvas Studio product decisions through ongoing collaboration with the Studio Product Manager",
+        "Wrote custom Node.js, SQL, and shell scripts, and used Puppeteer browser automation, to meet client-specific migration requirements without vendor API support"
       ]
     }
   ],
   "education": [
     {
       "institution": "Southern New Hampshire University",
-      "credential": "B.S. Computer Science, Machine Learning concentration",
-      "focus": "In progress",
-      "start": "2023",
+      "credential": "B.S. Computer Science (in progress)",
+      "start": "2025-09",
       "end": null,
-      "notes": "Add GPA if it's strong enough to be worth including"
+      "notes": "Cumulative GPA: 3.666. 50 of 120 credits completed."
     }
   ],
   "skills": [
-    { "category": "Languages", "items": ["JavaScript", "Python", "SQL"] },
-    { "category": "Infrastructure", "items": ["Docker", "Linux", "Self-hosted networking (Unifi, PKI/step-ca)"] },
-    { "category": "Tools", "items": ["Git", "Puppeteer", "Node.js"] }
+    { "category": "Programming Languages", "items": ["JavaScript (Node.js)", "Python", "SQL"] },
+    { "category": "Automation & Integration", "items": ["Puppeteer browser automation", "REST API integration", "Reverse-engineered auth/session-based data access", "FFmpeg"] },
+    { "category": "Systems & Infrastructure", "items": ["Linux", "Docker", "Proxmox virtualization", "Git", "Networking (VLANs, reverse proxy, PKI/TLS)"] },
+    { "category": "Business & Operations Systems", "items": ["SAP (Materials Management)", "Power Query", "Power BI", "Excel", "SharePoint", "Salesforce", "Jira/Confluence"] },
+    { "category": "Spoken Languages", "items": ["English", "Portuguese", "Spanish", "Italian"] }
   ]
 }

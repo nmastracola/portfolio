@@ -1,4 +1,5 @@
-import { defineCollection, z } from 'astro:content';
+import { defineCollection} from 'astro:content';
+import { z } from 'astro/zod';
 import { glob, file } from 'astro/loaders';
 
 // CV is a single structured data file, not a list of entries.
@@ -14,7 +15,7 @@ const cv = defineCollection({
       name: z.string(),
       title: z.string(),
       location: z.string(),
-      email: z.string().email(),
+      email: z.email(),
       links: z.array(
         z.object({
           label: z.string(),
@@ -26,6 +27,7 @@ const cv = defineCollection({
     experience: z.array(
       z.object({
         company: z.string(),
+        companyUrl: z.url().optional(),
         role: z.string(),
         location: z.string().optional(),
         start: z.string(), // e.g. "2021-06"

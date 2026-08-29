@@ -1,12 +1,12 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import { getEntry } from 'astro:content';
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { getEntry } from "astro:content";
 
-const cv = await getEntry('cv', 'resume');
+const cv = await getEntry("cv", "resume");
 const { basics, experience, education, skills } = cv.data;
 
 function formatRange(start: string, end?: string | null): string {
-  return `${start} — ${end ?? 'Present'}`;
+  return `${start} — ${end ?? "Present"}`;
 }
 ---
 
@@ -18,9 +18,7 @@ function formatRange(start: string, end?: string | null): string {
         <p class="cv-title">{basics.title} · {basics.location}</p>
         <p>{basics.summary}</p>
         <div class="cv-links">
-          {basics.links.map((link) => (
-            <a href={link.url}>{link.label}</a>
-          ))}
+          {basics.links.map((link) => <a href={link.url}>{link.label}</a>)}
           <a href={`mailto:${basics.email}`}>{basics.email}</a>
         </div>
       </div>
@@ -34,43 +32,67 @@ function formatRange(start: string, end?: string | null): string {
 
     <section>
       <h2>Experience</h2>
-      {experience.map((job) => (
-        <article class="entry">
-          <div class="entry-head">
-            <h3>{job.role} · {job.company}</h3>
-            <span class="entry-range">{formatRange(job.start, job.end)}</span>
-          </div>
-          {job.location && <p class="entry-location">{job.location}</p>}
-          <ul>
-            {job.highlights.map((h) => <li>{h}</li>)}
-          </ul>
-        </article>
-      ))}
+      {
+        experience.map((job) => (
+          <article class="entry">
+            <div class="entry-head">
+              <h3>
+                {job.role} ·{" "}
+                {job.companyUrl ? (
+                  <a
+                    href={job.companyUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {job.company}
+                  </a>
+                ) : (
+                  job.company
+                )}
+              </h3>
+              <span class="entry-range">{formatRange(job.start, job.end)}</span>
+            </div>
+            {job.location && <p class="entry-location">{job.location}</p>}
+            <ul>
+              {job.highlights.map((h) => (
+                <li>{h}</li>
+              ))}
+            </ul>
+          </article>
+        ))
+      }
     </section>
 
     <section>
       <h2>Education</h2>
-      {education.map((ed) => (
-        <article class="entry">
-          <div class="entry-head">
-            <h3>{ed.credential}</h3>
-            <span class="entry-range">{formatRange(ed.start, ed.end)}</span>
-          </div>
-          <p class="entry-location">{ed.institution}{ed.focus ? ` · ${ed.focus}` : ''}</p>
-          {ed.notes && <p>{ed.notes}</p>}
-        </article>
-      ))}
+      {
+        education.map((ed) => (
+          <article class="entry">
+            <div class="entry-head">
+              <h3>{ed.credential}</h3>
+              <span class="entry-range">{formatRange(ed.start, ed.end)}</span>
+            </div>
+            <p class="entry-location">
+              {ed.institution}
+              {ed.focus ? ` · ${ed.focus}` : ""}
+            </p>
+            {ed.notes && <p>{ed.notes}</p>}
+          </article>
+        ))
+      }
     </section>
 
     <section>
       <h2>Skills</h2>
       <div class="skills-grid">
-        {skills.map((group) => (
-          <div>
-            <h3>{group.category}</h3>
-            <p>{group.items.join(', ')}</p>
-          </div>
-        ))}
+        {
+          skills.map((group) => (
+            <div>
+              <h3>{group.category}</h3>
+              <p>{group.items.join(", ")}</p>
+            </div>
+          ))
+        }
       </div>
     </section>
   </div>
@@ -137,6 +159,8 @@ function formatRange(start: string, end?: string | null): string {
   /* Browser print/save-as-PDF fallback for this page itself,
      separate from the dedicated /resume.pdf download above. */
   @media print {
-    .no-print { display: none; }
+    .no-print {
+      display: none;
+    }
   }
 </style>
